@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<EntreHojas.BL.Producto>
 
 @{
-    ViewBag.Title = "Productos";
+    ViewBag.Title = "Producto";
 }
 
-<h2>Productos</h2>
+<h2>Producto</h2>
 
 <p>
-    @Html.ActionLink("Nuevo Producto", "Crear")
+    @Html.ActionLink("Nuevo producto", "Crear")
 </p>
 <table class="table">
     <tr>
@@ -20,8 +20,17 @@
         <th>
             @Html.DisplayNameFor(model => model.Precio)
         </th>
+        <th>   <!--Busca el display con el nombre de la imagen en la clase de Productos y lo muestra-->
+            @Html.DisplayNameFor(model => model.UrlImagen)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Existencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Activo)
         </th>
         <th></th>
     </tr>
@@ -37,8 +46,17 @@
         <td>
             @Html.DisplayFor(modelItem => item.Precio)
         </td>
+        <td                 <!-- Sirve para mostrar la imagen, nombre de la imagen y su tamaño ya el lista de Productos-->
+            <img src="@item.UrlImagen" alt="@item.Descripcion" style="max-width:64px; height:auto;" />
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Existencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categoria.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Activo)
         </td>
         <td>
             @Html.ActionLink("Editar", "Editar", new { id=item.Id }) |
