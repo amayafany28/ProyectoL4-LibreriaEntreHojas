@@ -46,8 +46,28 @@ namespace EntreHojas.WebAdmin.Controllers
         [HttpPost]
         public ActionResult Editar (Cliente cliente)
         {
+            _clientesBL.GuardarCliente(cliente);
             return RedirectToAction("Index");
         }
-           
+        public ActionResult Detalle(int id)
+        {
+            var cliente = _clientesBL.ObtenerCliente(id);
+
+
+            return View(cliente);
+        }
+        public ActionResult Eliminar(int id);
+        {
+
+        var cliente = _clientesBL.ObtenerCliente(id);
+        return View(cliente);
+
+        }
+    ´public ActionResult Eliminar (Cliente cliente)
+    {
+        return RedirectToAction("Index");
+    }
+         
+
     }
 }
