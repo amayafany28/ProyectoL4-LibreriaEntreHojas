@@ -7,68 +7,84 @@ using System.Web.Mvc;
 
 namespace EntreHojas.WebAdmin.Controllers
 {
+    [Authorize]
     public class ClientesController : Controller
     {
-        private object clientesBL;
+      
         ClientesBL _clientesBL;
-
         public ClientesController()
         {
             _clientesBL = new ClientesBL();
         }
-        
-           
-    
+
         // GET: Clientes
         public ActionResult Index()
         {
-            var listadeClientes = clientesBL.ObtenerCliente();
+            var listadeClientes = _clientesBL.ObtenerClientes();
+
             return View(listadeClientes);
         }
-        public ActionResult Crear ()
+
+        public ActionResult Crear()
         {
             var nuevoCliente = new Cliente();
 
             return View(nuevoCliente);
-        } 
-        [HttpPost]
-        public ActionResult Crear (Cliente cliente)
-        {
-            _clientesBL.GuardarCliente(cliente);
-            return RedirectToAction("Index");
         }
-        public ActionResult Editar(int id )
 
+        [HttpPost]
+        public ActionResult Crear(Cliente cliente)
         {
-           var cliente =  _clientesBL.ObtenerCliente(id);
+            if (ModelState.IsValid)
+            {
+                _clientesBL.GuardarCliente(cliente);
+
+                return RedirectToAction("Index");
+            }
+
             return View(cliente);
         }
-        [HttpPost]
-        public ActionResult Editar (Cliente cliente)
+
+        public ActionResult Editar(int id)
         {
-            _clientesBL.GuardarCliente(cliente);
-            return RedirectToAction("Index");
+            var cliente = _clientesBL.ObtenerCliente(id);
+
+            return View(cliente);
         }
+
+        [HttpPost]
+        public ActionResult Editar(Cliente cliente)
+        {
+            if (ModelState.IsValid)
+            {
+                _clientesBL.GuardarCliente(cliente);
+
+                return RedirectToAction("Index");
+            }
+
+            return View(cliente);
+        }
+
         public ActionResult Detalle(int id)
         {
             var cliente = _clientesBL.ObtenerCliente(id);
 
+            return View(cliente);
+        }
+
+        public ActionResult Eliminar(int id)
+        {
+            var cliente = _clientesBL.ObtenerCliente(id);
 
             return View(cliente);
         }
-        public ActionResult Eliminar(int id);
+
+        [HttpPost]
+        public ActionResult Eliminar(Cliente cliente)
         {
+            _clientesBL.EliminarCliente(cliente.Id);
 
-        var cliente = _clientesBL.ObtenerCliente(id);
-        return View(cliente);
-
+            return RedirectToAction("Index");
         }
-       [HttpPost]
-           public ActionResult Eliminar (Cliente cliente)
-    {
-        return RedirectToAction("Index");
-    }
-         
-
     }
 }

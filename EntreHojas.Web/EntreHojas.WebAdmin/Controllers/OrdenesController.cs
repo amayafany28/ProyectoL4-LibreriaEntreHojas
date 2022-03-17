@@ -40,8 +40,9 @@ namespace EntreHojas.WebAdmin.Controllers
         {
             if (orden.ClienteId == 0)
             {
-                ModelState.AddModelError("ClienteId", "Seleccione Un Cliente ")
-                    return View(orden);
+                ModelState.AddModelError("ClienteId", "Seleccione Un Cliente ");
+
+                return View(orden);
             }
         }
     }
