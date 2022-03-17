@@ -63,7 +63,8 @@ namespace EntreHojas.WebAdmin.Controllers
         return View(cliente);
 
         }
-    ´public ActionResult Eliminar (Cliente cliente)
+       [HttpPost]
+           public ActionResult Eliminar (Cliente cliente)
     {
         return RedirectToAction("Index");
     }

@@ -32,7 +32,11 @@ namespace EntreHojas.BL
             else
             {
                 var clienteExistente = _contexto.Clientes.Find(cliente.Id);
+
+                clienteExistente.Nombre = cliente.Nombre;
+                clienteExistente.Telefono = cliente.Telefono;
                 clienteExistente.Direccion = cliente.Direccion;
+                clienteExistente.Activo = cliente.Activo;
 
             }
             _contexto.SaveChanges();

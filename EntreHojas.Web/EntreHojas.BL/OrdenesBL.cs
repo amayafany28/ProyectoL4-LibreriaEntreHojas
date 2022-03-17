@@ -15,7 +15,7 @@ namespace EntreHojas.BL
         public OrdenesBL()
         {
             _contexto = new BL.Contexto();
-            ListadeOrdenes = List<Orden>();
+            ListadeOrdenes = new List<Orden>();
 
         }
         public List<Orden> ObtenerOrdenes();
