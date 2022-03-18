@@ -25,6 +25,7 @@ namespace EntreHojas.BL
 
             return ListadeOrdenes;
         }
+      
 
         public List<OrdenDetalle> ObtenerOrdenDetalle(int ordenId)
         {
