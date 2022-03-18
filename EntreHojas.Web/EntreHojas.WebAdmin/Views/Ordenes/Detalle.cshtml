@@ -1,4 +1,4 @@
-﻿@model EntreHojas.BL.Cliente
+﻿@model EntreHojas.BL.Orden
 
 @{
     ViewBag.Title = "Detalle";
@@ -7,31 +7,31 @@
 <h2>Detalle</h2>
 
 <div>
-    <h4>Cliente</h4>
+    <h4>Orden</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
+            @Html.DisplayNameFor(model => model.ClienteId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Nombre)
+            @Html.DisplayFor(model => model.cliente.Nombre)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Telefono)
+            @Html.DisplayNameFor(model => model.Fecha)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Telefono)
+            @Html.DisplayFor(model => model.Fecha)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Direccion)
+            @Html.DisplayNameFor(model => model.Total)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Direccion)
+            @Html.DisplayFor(model => model.Total)
         </dd>
 
         <dt>
@@ -46,5 +46,5 @@
 </div>
 <p>
     @Html.ActionLink("Editar", "Editar", new { id = Model.Id }) |
-    @Html.ActionLink("Regresar a la lista", "Index")
+    @Html.ActionLink("Regresar a la Lista", "Index")
 </p>

@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +25,6 @@ namespace EntreHojas.BL
 
             return ListadeOrdenes;
         }
-      
 
         public List<OrdenDetalle> ObtenerOrdenDetalle(int ordenId)
         {
@@ -94,4 +93,4 @@ namespace EntreHojas.BL
             _contexto.SaveChanges();
         }
     }
-}
+} 

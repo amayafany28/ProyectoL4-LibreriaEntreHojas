@@ -7,10 +7,12 @@ using System.Web.Mvc;
 
 namespace EntreHojas.WebAdmin.Controllers
 {
+   
     public class ClientesController : Controller
     {
       
         ClientesBL _clientesBL;
+
         public ClientesController()
         {
             _clientesBL = new ClientesBL();
@@ -64,12 +66,15 @@ namespace EntreHojas.WebAdmin.Controllers
             return View(cliente);
         }
 
+
         public ActionResult Detalle(int id)
         {
             var cliente = _clientesBL.ObtenerCliente(id);
 
             return View(cliente);
         }
+
+
 
         public ActionResult Eliminar(int id)
         {
